@@ -63,13 +63,13 @@ function draw() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     
     /* Set the values of the projection transformation */
-    let projection = m4.perspective(Math.PI/8, 1, 8, 12); 
+    let projection = m4.perspective(Math.PI/4 ,1 , 4, 24); 
     
     /* Get the view matrix from the SimpleRotator object.*/
     let modelView = spaceball.getViewMatrix();
 
     let rotateToPointZero = m4.axisRotation([0.707,0.707,0], 0.7);
-    let translateToPointZero = m4.translation(0,0,-10);
+    let translateToPointZero = m4.translation(0,0,-20);
 
     let matAccum0 = m4.multiply(rotateToPointZero, modelView );
     let matAccum1 = m4.multiply(translateToPointZero, matAccum0 );
@@ -89,15 +89,32 @@ function draw() {
 function CreateSurfaceData()
 {
     let vertexList = [];
+    const a = 1; 
+    const b = 1; 
+    const c = 0.5; 
 
-    for (let i=0; i<360; i+=5) {
-        vertexList.push( Math.sin(deg2rad(i)), 1, Math.cos(deg2rad(i)) );
-        vertexList.push( Math.sin(deg2rad(i)), 0, Math.cos(deg2rad(i)) );
+
+    for (let u = 0; u <= 360; u+=5 ) {
+    for (let v = -180; v <= 180; v+=2 ){
+            let x = a * u * Math.sin(deg2rad(u))* Math.cos(deg2rad(v));
+            let y = b * u * Math.cos(deg2rad(u))* Math.cos(deg2rad(v))
+            let z = -c * u * Math.sin(deg2rad(v))
+
+            vertexList.push( x, y, z );
+        }
     }
-
-    return vertexList;
-}
-
+        for (let v = -180; v <= 180; v+=2 ){
+            for (let u = 0; u <= 360; u+=5 ) {
+                let x = a * deg2rad(u) * Math.sin(deg2rad(u))* Math.cos(deg2rad(v));
+                let y = b * deg2rad(u) * Math.cos(deg2rad(u))* Math.cos(deg2rad(v))
+                let z = -c * deg2rad(u) * Math.sin(deg2rad(v))
+    
+                vertexList.push( x, y, z );
+            }
+        }
+       
+    return vertexList;  
+    }
 
 /* Initialize the WebGL context. Called from init() */
 function initGL() {
