@@ -86,35 +86,33 @@ function draw() {
     surface.Draw();
 }
 
-function CreateSurfaceData()
-{
+function CreateSurfaceData() {
     let vertexList = [];
-    const a = 1; 
-    const b = 1; 
-    const c = 0.5; 
-
-
-    for (let u = 0; u <= 360; u+=5 ) {
-    for (let v = -180; v <= 180; v+=2 ){
-            let x = a * u * Math.sin(deg2rad(u))* Math.cos(deg2rad(v));
-            let y = b * u * Math.cos(deg2rad(u))* Math.cos(deg2rad(v))
-            let z = -c * u * Math.sin(deg2rad(v))
-
-            vertexList.push( x, y, z );
-        }
+    const a = 1;
+    const b = 1;
+    const c = 0.5;
+  
+    for (let u = 0; u <= 360; u += 5) {
+      for (let v = -180; v <= 180; v += 2) {
+        let x = a * deg2rad(u) * Math.sin(deg2rad(u)) * Math.cos(deg2rad(v));
+        let y = b * deg2rad(u) * Math.cos(deg2rad(u)) * Math.cos(deg2rad(v));
+        let z = -c * deg2rad(u) * Math.sin(deg2rad(v));
+  
+        vertexList.push(x, y, z);
+      }
     }
-        for (let v = -180; v <= 180; v+=2 ){
-            for (let u = 0; u <= 360; u+=5 ) {
-                let x = a * deg2rad(u) * Math.sin(deg2rad(u))* Math.cos(deg2rad(v));
-                let y = b * deg2rad(u) * Math.cos(deg2rad(u))* Math.cos(deg2rad(v))
-                let z = -c * deg2rad(u) * Math.sin(deg2rad(v))
-    
-                vertexList.push( x, y, z );
-            }
-        }
-       
-    return vertexList;  
+    for (let v = -180; v <= 180; v += 2) {
+      for (let u = 0; u <= 360; u += 5) {
+        let x = a * deg2rad(u) * Math.sin(deg2rad(u)) * Math.cos(deg2rad(v));
+        let y = b * deg2rad(u) * Math.cos(deg2rad(u)) * Math.cos(deg2rad(v));
+        let z = -c * deg2rad(u) * Math.sin(deg2rad(v));
+  
+        vertexList.push(x, y, z);
+      }
     }
+  
+    return vertexList;
+  }
 
 /* Initialize the WebGL context. Called from init() */
 function initGL() {
