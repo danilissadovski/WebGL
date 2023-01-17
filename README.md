@@ -1,5 +1,5 @@
 # WebGL
 
-Issadovskyi Danylo TR-22mp PA1
+Project that accompanies VGGI credit module.
 
-![image](https://github.com/danilissadovski/WebGL/blob/PA1/snailSurface.gif)
+Visit vggi-kpi.blogspot.com for more information
