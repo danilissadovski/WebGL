@@ -1,5 +1,5 @@
 # WebGL
 
-Project that accompanies VGGI credit module.
+Issadovskyi Danylo TR-22mp PGW
 
-Visit vggi-kpi.blogspot.com for more information
+![image](https://github.com/danilissadovski/WebGL/blob/PA2/trackBall.gif)
